@@ -9,7 +9,7 @@ eXiT=false
 FILE=$(echo "$@" | perl -pe 's/.* (.*)$/$1/g')
 if ! [[ $(ls $FILE) == "$FILE" ]]
 then
-	echo "Error muther fucker"
+	echo "Error..."
 	exit 1
 fi
 

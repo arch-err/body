@@ -6,3 +6,6 @@ A combination of head/tail and grep. You grep for a pattern, then it gives you t
 
 # Installation
 Comming Soon..,
+
+# Disclaimer
+This script is very much a work in progress... At the moment it is barely usable. Please just bookmark this project and check back in later!
