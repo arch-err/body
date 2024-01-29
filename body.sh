@@ -1,29 +1,38 @@
 #!/bin/bash
 
 # Number of Lines
-NoL=5
+lines=5
 
-eXiT=false
+exit=false
 
 # Store the last arg as file if file exists
 FILE=$(echo "$@" | perl -pe 's/.* (.*)$/$1/g')
-if ! [[ $(ls $FILE) == "$FILE" ]]
+ARGS=$(echo "$@" | perl -pe 's/(.*) .*$/$1/g')
+[ "$ARGS" = "$FILE" ] && ARGS=""
+
+echo $FILE
+echo $ARGS
+
+if ! [ -f $FILE ] 
 then
-	echo "Error..."
+	echo "Error: file doesn't exist"
 	exit 1
 fi
 
 # Number of lines in the file with the grepped string
-lines=$(grep -n $1 $FILE | perl -pe 's/\:.*\n/ /' | sed 's/ $//')
+lines=$(grep -n $ARGS $FILE | perl -pe 's/\:.*\n/ /' | sed 's/ $//')
 
-FLen=$(cat $FILE | wc -l)
+file_length=$(cat $FILE | wc -l)
 
-for i in $lines
+
+# Adds support for multiple hits
+for line in $lines
 do
-	ULim=$(($i+$NoL))
-	LLim=$(($i-$NoL))
-	[[ $(($i<$NoL)) == "1" ]] && LLim=0 
-	[[ $(($i+$NoL>$FLen)) == "1" ]] && ULim=$FLen
+	upper_limit=$(( $line + $lines ))
+	lower_limit=$(( $line - $lines ))
+
+	[[ $(( $line < $lines )) == "1" ]] && LLim=0 
+	[[ $(( $line + $lines > $file_length )) == "1" ]] && ULim=$FLen
 
 	
 	awk "NR>=$LLim&&NR<=$(($i-1))" $FILE
@@ -32,8 +41,6 @@ do
 	
 	if ! [[ $(echo $lines | perl -pe 's/ /\n/g' | wc -l) == 1 ]]
 	then	
-		echo
-		echo "---------"
-		echo
+		echo "\n---------\n"
 	fi
 done
