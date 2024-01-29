@@ -1,11 +1,14 @@
-# body
-A combination of head/tail and grep. You grep for a pattern, then it gives you the surrounding text.
+# This script is utterly useless!
+**I just learned that you can use the `-C NUM` when using grep, which will do exactly what my poorly written shellscript does. Don't use this script, just use `grep <pattern> <file> -C <number-of-lines>`.**
 
-# Description
-"body" is a combination of the well known commands head/tail and grep. The problem with grep is that if you want to search for a pattern in a file and then read the surrounding text, you normally have to cat out the whole text, or open it in an editor. With body, you can just grep for the pattern and read all of the text surrounding that line.
+~~# body~~\
+~~A combination of head/tail and grep. You grep for a pattern, then it gives you the surrounding text.~~
 
-# Installation
-Comming Soon..,
+~~# Description~~\
+~~"body" is a combination of the well known commands head/tail and grep. The problem with grep is that if you want to search for a pattern in a file and then read the surrounding text, you normally have to cat out the whole text, or open it in an editor. With body, you can just grep for the pattern and read all of the text surrounding that line.~~
 
-# Disclaimer
-This script is very much a work in progress... At the moment it is barely usable. Please just bookmark this project and check back in later!
+~~# Installation~~\
+~~Comming Soon..,~~
+
+~~# Disclaimer~~\
+~~This script is very much a work in progress... At the moment it is barely usable. Please just bookmark this project and check back in later!~~
